@@ -1,0 +1,685 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1" />-->
+<!--    <title>Everyday Mini Tools – BMI • EMI • Currency • Quotes</title>-->
+<!--    <meta name="description" content="Free online mini tools: BMI Calculator, Loan EMI Calculator, Currency Converter, and Daily Quote Generator." />-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">-->
+<!--    <style>-->
+<!--        :root{-->
+<!--          &#45;&#45;bg:#0b1020; &#45;&#45;panel:#121833; &#45;&#45;muted:#9aa4bf; &#45;&#45;text:#e7ecff; &#45;&#45;accent:#6aa3ff; &#45;&#45;accent2:#38d39f;-->
+<!--          &#45;&#45;card:#0f1530; &#45;&#45;border:#1f284a; &#45;&#45;error:#ff6b6b; &#45;&#45;ok:#38d39f; &#45;&#45;warn:#ffd166;-->
+<!--        }-->
+<!--        *{box-sizing:border-box}-->
+<!--        html,body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#0a0f22,#0e1430 40%,#0a0f22);color:var(&#45;&#45;text)}-->
+<!--        a{color:var(&#45;&#45;accent);text-decoration:none}-->
+<!--        .container{max-width:1100px;margin:0 auto;padding:24px}-->
+<!--        header{position:sticky;top:0;background:rgba(10,15,34,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(&#45;&#45;border);z-index:50}-->
+<!--        .nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}-->
+<!--        .brand{font-weight:700;letter-spacing:.3px}-->
+<!--        .tabs{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}-->
+<!--        .tab{padding:10px 14px;border:1px solid var(&#45;&#45;border);border-radius:12px;background:var(&#45;&#45;panel);color:var(&#45;&#45;text);cursor:pointer}-->
+<!--        .tab.active{outline:2px solid var(&#45;&#45;accent);}-->
+
+<!--        .grid{display:grid;grid-template-columns:1fr;gap:18px}-->
+<!--        @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}-->
+
+<!--        .card{background:var(&#45;&#45;card);border:1px solid var(&#45;&#45;border);border-radius:16px;padding:18px}-->
+<!--        .card h2{margin:0 0 10px;font-size:20px}-->
+<!--        .muted{color:var(&#45;&#45;muted);font-size:14px}-->
+<!--        label{display:block;margin:10px 0 6px}-->
+<!--        input,select,button,textarea{font:inherit}-->
+<!--        input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(&#45;&#45;border);background:#0b1130;color:var(&#45;&#45;text)}-->
+<!--        button{padding:12px 14px;border-radius:12px;border:1px solid var(&#45;&#45;border);background:var(&#45;&#45;accent);color:#06122a;font-weight:700;cursor:pointer}-->
+<!--        .btn-secondary{background:transparent;color:var(&#45;&#45;text)}-->
+<!--        .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}-->
+<!--        .result{padding:12px;border-radius:12px;background:#0b1235;border:1px solid var(&#45;&#45;border)}-->
+<!--        .kpi{display:flex;gap:12px;flex-wrap:wrap}-->
+<!--        .pill{background:#0b1235;border:1px solid var(&#45;&#45;border);padding:10px 12px;border-radius:999px}-->
+<!--        .badge{border-radius:10px;padding:6px 10px;border:1px solid var(&#45;&#45;border);display:inline-block}-->
+<!--        .bar{height:14px;background:#0b1235;border:1px solid var(&#45;&#45;border);border-radius:999px;overflow:hidden}-->
+<!--        .bar > span{display:block;height:100%;background:linear-gradient(90deg,#38d39f,#6aa3ff);width:0}-->
+
+<!--        footer{margin-top:32px;color:var(&#45;&#45;muted);font-size:13px;text-align:center}-->
+<!--        .ad{background:#0b1235;border:1px dashed var(&#45;&#45;border);padding:16px;border-radius:12px;text-align:center;color:#7d86a5}-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<header>-->
+<!--    <div class="container nav">-->
+<!--        <div class="brand">Everyday Mini Tools</div>-->
+<!--        <div class="tabs">-->
+<!--            <button class="tab active" data-tab="bmi">BMI Calculator</button>-->
+<!--            <button class="tab" data-tab="emi">Loan EMI</button>-->
+<!--            <button class="tab" data-tab="fx">Currency Converter</button>-->
+<!--            <button class="tab" data-tab="quotes">Daily Quotes</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--<main class="container" id="app">-->
+<!--    &lt;!&ndash; ====== AD SLOT (AUTO ADS also works if you paste AdSense snippet in <head>) ======-->
+<!--    Paste your AdSense code here after approval, e.g.-->
+<!--    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX" crossorigin="anonymous"></script>-->
+<!--    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="YYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>-->
+<!--    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
+<!--    &ndash;&gt;-->
+
+<!--    &lt;!&ndash; BMI &ndash;&gt;-->
+<!--    <section class="grid tool" id="tab-bmi">-->
+<!--        <div class="card">-->
+<!--            <h2>Body Mass Index (BMI) Calculator</h2>-->
+<!--            <p class="muted">Enter your height and weight to calculate BMI and category.</p>-->
+<!--            <div class="row">-->
+<!--                <div>-->
+<!--                    <label for="heightCm">Height (cm)</label>-->
+<!--                    <input id="heightCm" type="number" placeholder="e.g., 165" min="50" max="260" />-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="weightKg">Weight (kg)</label>-->
+<!--                    <input id="weightKg" type="number" placeholder="e.g., 60" min="10" max="350" />-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">-->
+<!--                <button id="bmiCalcBtn">Calculate BMI</button>-->
+<!--                <button class="btn-secondary" id="bmiResetBtn">Reset</button>-->
+<!--            </div>-->
+<!--            <div class="result" style="margin-top:14px">-->
+<!--                <div class="kpi">-->
+<!--                    <span class="pill">BMI: <strong id="bmiValue">–</strong></span>-->
+<!--                    <span class="pill">Category: <strong id="bmiCategory">–</strong></span>-->
+<!--                </div>-->
+<!--                <div style="margin-top:12px">-->
+<!--                    <div class="bar"><span id="bmiBar"></span></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="card">-->
+<!--            <h2>About BMI</h2>-->
+<!--            <p class="muted">BMI = weight(kg) / [height(m)]². Categories: Underweight (&lt;18.5), Normal (18.5–24.9), Overweight (25–29.9), Obesity (≥30).</p>-->
+<!--            <div class="ad">Ad space</div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    &lt;!&ndash; EMI &ndash;&gt;-->
+<!--    <section class="grid tool" id="tab-emi" style="display:none">-->
+<!--        <div class="card">-->
+<!--            <h2>Loan EMI Calculator</h2>-->
+<!--            <p class="muted">Calculate your monthly EMI, total interest, and total payment.</p>-->
+<!--            <div class="row">-->
+<!--                <div>-->
+<!--                    <label for="loanAmount">Loan Amount (₹)</label>-->
+<!--                    <input id="loanAmount" type="number" placeholder="e.g., 500000" min="1000" />-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="annualRate">Annual Interest Rate (%)</label>-->
+<!--                    <input id="annualRate" type="number" placeholder="e.g., 10" step="0.01" min="0" />-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div>-->
+<!--                    <label for="tenure">Tenure</label>-->
+<!--                    <input id="tenure" type="number" placeholder="e.g., 5" min="1" />-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="tenureUnit">Unit</label>-->
+<!--                    <select id="tenureUnit">-->
+<!--                        <option value="years" selected>Years</option>-->
+<!--                        <option value="months">Months</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">-->
+<!--                <button id="emiCalcBtn">Calculate EMI</button>-->
+<!--                <button class="btn-secondary" id="emiResetBtn">Reset</button>-->
+<!--            </div>-->
+<!--            <div class="result" style="margin-top:14px">-->
+<!--                <div class="kpi">-->
+<!--                    <span class="pill">EMI: <strong id="emiValue">–</strong></span>-->
+<!--                    <span class="pill">Total Interest: <strong id="emiInterest">–</strong></span>-->
+<!--                    <span class="pill">Total Payment: <strong id="emiTotal">–</strong></span>-->
+<!--                </div>-->
+<!--                <div style="margin-top:12px">-->
+<!--                    <div class="bar"><span id="emiBar"></span></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="card">-->
+<!--            <h2>Formula</h2>-->
+<!--            <p class="muted">EMI = P × r × (1+r)^n / ((1+r)^n − 1), where P is principal, r is monthly interest rate, and n is number of months.</p>-->
+<!--            <div class="ad">Ad space</div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    &lt;!&ndash; Currency &ndash;&gt;-->
+<!--    <section class="grid tool" id="tab-fx" style="display:none">-->
+<!--        <div class="card">-->
+<!--            <h2>Currency Converter</h2>-->
+<!--            <p class="muted">Live foreign exchange using exchangerate.host (free API, no key required).</p>-->
+<!--            <div class="row">-->
+<!--                <div>-->
+<!--                    <label for="fxAmount">Amount</label>-->
+<!--                    <input id="fxAmount" type="number" placeholder="e.g., 100" min="0" step="0.01" />-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="fxFrom">From</label>-->
+<!--                    <select id="fxFrom"></select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div>-->
+<!--                    <label for="fxTo">To</label>-->
+<!--                    <select id="fxTo"></select>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label>&nbsp;</label>-->
+<!--                    <button id="fxConvertBtn">Convert</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="result" style="margin-top:14px">-->
+<!--                <div class="kpi">-->
+<!--                    <span class="pill">Converted: <strong id="fxResult">–</strong></span>-->
+<!--                    <span class="pill">Rate: <strong id="fxRate">–</strong></span>-->
+<!--                    <span class="pill">Updated: <strong id="fxUpdated">–</strong></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="card">-->
+<!--            <h2>Tip</h2>-->
+<!--            <p class="muted">Bookmark this page to quickly check conversions when shopping online or planning travel.</p>-->
+<!--            <div class="ad">Ad space</div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    &lt;!&ndash; Quotes &ndash;&gt;-->
+<!--    <section class="grid tool" id="tab-quotes" style="display:none">-->
+<!--        <div class="card">-->
+<!--            <h2>Daily Quote Generator</h2>-->
+<!--            <p class="muted">Get a fresh inspirational quote. API: quotable.io (free).</p>-->
+<!--            <button id="quoteBtn">Get Quote</button>-->
+<!--            <div class="result" style="margin-top:14px">-->
+<!--                <blockquote id="quoteText" style="font-size:18px;line-height:1.6;margin:0"></blockquote>-->
+<!--                <div class="muted" id="quoteAuthor" style="margin-top:8px"></div>-->
+<!--                <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">-->
+<!--                    <button id="shareWhatsApp" class="btn-secondary">Share on WhatsApp</button>-->
+<!--                    <button id="shareTwitter" class="btn-secondary">Share on X</button>-->
+<!--                    <button id="copyQuote" class="btn-secondary">Copy</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="card">-->
+<!--            <h2>Pro tip</h2>-->
+<!--            <p class="muted">Turn quotes into Instagram posts or stories for organic traffic. Link back here in your bio.</p>-->
+<!--            <div class="ad">Ad space</div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <footer>-->
+<!--        Made with ♥. This site is ad-supported.-->
+<!--    </footer>-->
+<!--</main>-->
+
+<!--<script>-->
+<!--    // &#45;&#45;&#45;&#45; Tab Navigation &#45;&#45;&#45;&#45;-->
+<!--    const tabs = document.querySelectorAll('.tab');-->
+<!--    const tools = document.querySelectorAll('.tool');-->
+<!--    tabs.forEach(t=>t.addEventListener('click',()=>{-->
+<!--      tabs.forEach(x=>x.classList.remove('active'));-->
+<!--      t.classList.add('active');-->
+<!--      const id = 'tab-'+t.dataset.tab;-->
+<!--      tools.forEach(s=>s.style.display = s.id===id ? '' : 'none');-->
+<!--      // optional: update URL hash-->
+<!--      location.hash = t.dataset.tab;-->
+<!--    }));-->
+<!--    // restore tab from URL-->
+<!--    const hash = location.hash.replace('#','');-->
+<!--    if(hash){-->
+<!--      const btn = document.querySelector(`.tab[data-tab="${hash}"]`);-->
+<!--      if(btn) btn.click();-->
+<!--    }-->
+
+<!--    // &#45;&#45;&#45;&#45; BMI Calculator &#45;&#45;&#45;&#45;-->
+<!--    const heightCm = document.getElementById('heightCm');-->
+<!--    const weightKg = document.getElementById('weightKg');-->
+<!--    const bmiValue = document.getElementById('bmiValue');-->
+<!--    const bmiCategory = document.getElementById('bmiCategory');-->
+<!--    const bmiBar = document.getElementById('bmiBar');-->
+
+<!--    function calcBMI(){-->
+<!--      const h = parseFloat(heightCm.value);-->
+<!--      const w = parseFloat(weightKg.value);-->
+<!--      if(!h || !w || h<=0 || w<=0){-->
+<!--        bmiValue.textContent = '–';-->
+<!--        bmiCategory.textContent = '–';-->
+<!--        bmiBar.style.width = '0%';-->
+<!--        return;-->
+<!--      }-->
+<!--      const m = h/100;-->
+<!--      const bmi = w/(m*m);-->
+<!--      const rounded = Math.round(bmi*10)/10;-->
+<!--      bmiValue.textContent = rounded.toFixed(1);-->
+<!--      let cat = 'Normal', p=50;-->
+<!--      if(bmi < 18.5){cat='Underweight'; p = Math.max(5, bmi/40*100);}-->
+<!--      else if(bmi < 25){cat='Normal'; p = Math.min(65, (bmi-18.5)/(25-18.5)*35 + 30);}-->
+<!--      else if(bmi < 30){cat='Overweight'; p = 70 + (bmi-25)/(30-25)*15;}-->
+<!--      else {cat='Obese'; p = Math.min(100, 85 + (bmi-30)/10*15);}-->
+<!--      bmiCategory.textContent = cat;-->
+<!--      bmiBar.style.width = p+'%';-->
+<!--    }-->
+<!--    document.getElementById('bmiCalcBtn').addEventListener('click', calcBMI);-->
+<!--    document.getElementById('bmiResetBtn').addEventListener('click', ()=>{-->
+<!--      heightCm.value = '';-->
+<!--      weightKg.value = '';-->
+<!--      calcBMI();-->
+<!--    });-->
+
+<!--    // &#45;&#45;&#45;&#45; EMI Calculator &#45;&#45;&#45;&#45;-->
+<!--    const loanAmount = document.getElementById('loanAmount');-->
+<!--    const annualRate = document.getElementById('annualRate');-->
+<!--    const tenure = document.getElementById('tenure');-->
+<!--    const tenureUnit = document.getElementById('tenureUnit');-->
+<!--    const emiValue = document.getElementById('emiValue');-->
+<!--    const emiInterest = document.getElementById('emiInterest');-->
+<!--    const emiTotal = document.getElementById('emiTotal');-->
+<!--    const emiBar = document.getElementById('emiBar');-->
+
+<!--    function formatINR(x){-->
+<!--      return new Intl.NumberFormat('en-IN', { style:'currency', currency:'INR', maximumFractionDigits:0}).format(x);-->
+<!--    }-->
+
+<!--    function calcEMI(){-->
+<!--      const P = parseFloat(loanAmount.value||0);-->
+<!--      const rAnnual = parseFloat(annualRate.value||0)/100;-->
+<!--      const n = (tenureUnit.value==='years') ? (parseInt(tenure.value||0)*12) : parseInt(tenure.value||0);-->
+<!--      if(P<=0 || rAnnual<0 || n<=0){-->
+<!--        emiValue.textContent = '–';-->
+<!--        emiInterest.textContent = '–';-->
+<!--        emiTotal.textContent = '–';-->
+<!--        emiBar.style.width='0%';-->
+<!--        return;-->
+<!--      }-->
+<!--      const r = rAnnual/12;-->
+<!--      const pow = Math.pow(1+r, n);-->
+<!--      const EMI = r===0 ? P/n : P*r*pow/(pow-1);-->
+<!--      const total = EMI*n;-->
+<!--      const interest = total - P;-->
+<!--      emiValue.textContent = formatINR(EMI);-->
+<!--      emiInterest.textContent = formatINR(interest);-->
+<!--      emiTotal.textContent = formatINR(total);-->
+<!--      const p = Math.min(100, (interest/total)*100);-->
+<!--      emiBar.style.width = p+'%';-->
+<!--    }-->
+<!--    document.getElementById('emiCalcBtn').addEventListener('click', calcEMI);-->
+<!--    document.getElementById('emiResetBtn').addEventListener('click', ()=>{-->
+<!--      loanAmount.value = annualRate.value = tenure.value = '';-->
+<!--      tenureUnit.value = 'years';-->
+<!--      calcEMI();-->
+<!--    });-->
+
+<!--    // &#45;&#45;&#45;&#45; Currency Converter &#45;&#45;&#45;&#45;-->
+<!--    const fxAmount = document.getElementById('fxAmount');-->
+<!--    const fxFrom = document.getElementById('fxFrom');-->
+<!--    const fxTo = document.getElementById('fxTo');-->
+<!--    const fxResult = document.getElementById('fxResult');-->
+<!--    const fxRate = document.getElementById('fxRate');-->
+<!--    const fxUpdated = document.getElementById('fxUpdated');-->
+
+<!--    const popular = ['USD','EUR','INR','GBP','JPY','AUD','CAD','SGD','AED'];-->
+
+<!--    async function loadSymbols(){-->
+<!--      try{-->
+<!--        const res = await fetch('https://api.exchangerate.host/symbols');-->
+<!--        const data = await res.json();-->
+<!--        const symbols = data.symbols || {};-->
+<!--        const codes = Object.keys(symbols);-->
+<!--        // put popular first-->
+<!--        const ordered = [...new Set([...popular, ...codes])];-->
+<!--        for(const code of ordered){-->
+<!--          if(!symbols[code]) continue;-->
+<!--          const o1 = document.createElement('option'); o1.value = code; o1.textContent = `${code} — ${symbols[code].description}`;-->
+<!--          const o2 = o1.cloneNode(true);-->
+<!--          fxFrom.appendChild(o1); fxTo.appendChild(o2);-->
+<!--        }-->
+<!--        fxFrom.value = 'USD'; fxTo.value = 'INR';-->
+<!--      }catch(e){-->
+<!--        // fallback limited list-->
+<!--        ['USD','INR','EUR','GBP','JPY'].forEach(c=>{-->
+<!--          const o1 = document.createElement('option'); o1.value=c; o1.textContent=c;-->
+<!--          const o2 = o1.cloneNode(true);-->
+<!--          fxFrom.appendChild(o1); fxTo.appendChild(o2);-->
+<!--        });-->
+<!--        fxFrom.value='USD'; fxTo.value='INR';-->
+<!--      }-->
+<!--    }-->
+
+<!--    async function convert(){-->
+<!--      const amt = parseFloat(fxAmount.value||0);-->
+<!--      const from = fxFrom.value; const to = fxTo.value;-->
+<!--      if(!(amt>0)) { fxResult.textContent='–'; return; }-->
+<!--      try{-->
+<!--        const url = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amt}`;-->
+<!--        const res = await fetch(url);-->
+<!--        const data = await res.json();-->
+<!--        fxResult.textContent = new Intl.NumberFormat(undefined,{maximumFractionDigits:4}).format(data.result);-->
+<!--        fxRate.textContent = data.info && data.info.rate ? data.info.rate.toFixed(6) : '–';-->
+<!--        fxUpdated.textContent = data.date || new Date().toISOString().slice(0,10);-->
+<!--      }catch(e){-->
+<!--        fxResult.textContent = 'Conversion failed. Try again.';-->
+<!--      }-->
+<!--    }-->
+<!--    document.getElementById('fxConvertBtn').addEventListener('click', convert);-->
+<!--    loadSymbols();-->
+
+<!--    // &#45;&#45;&#45;&#45; Daily Quotes &#45;&#45;&#45;&#45;-->
+<!--    const quoteBtn = document.getElementById('quoteBtn');-->
+<!--    const quoteText = document.getElementById('quoteText');-->
+<!--    const quoteAuthor = document.getElementById('quoteAuthor');-->
+
+<!--    async function getQuote(){-->
+<!--      try{-->
+<!--        quoteText.textContent = 'Loading…';-->
+<!--        quoteAuthor.textContent = '';-->
+<!--        const res = await fetch('https://api.quotable.io/random');-->
+<!--        const data = await res.json();-->
+<!--        quoteText.textContent = '“'+data.content+'”';-->
+<!--        quoteAuthor.textContent = '— '+data.author;-->
+<!--      }catch(e){-->
+<!--        const fallbacks = [-->
+<!--          {content:'The best time to plant a tree was 20 years ago. The second best time is now.', author:'Chinese Proverb'},-->
+<!--          {content:'What you do every day matters more than what you do once in a while.', author:'Gretchen Rubin'},-->
+<!--          {content:'We are what we repeatedly do. Excellence, then, is not an act, but a habit.', author:'Aristotle'}-->
+<!--        ];-->
+<!--        const q = fallbacks[Math.floor(Math.random()*fallbacks.length)];-->
+<!--        quoteText.textContent = '“'+q.content+'”';-->
+<!--        quoteAuthor.textContent = '— '+q.author;-->
+<!--      }-->
+<!--    }-->
+<!--    quoteBtn.addEventListener('click', getQuote);-->
+<!--    getQuote(); // auto load first-->
+
+<!--    // Share buttons-->
+<!--    function currentQuote(){-->
+<!--      const text = quoteText.textContent.replace(/^“|”$/g,'');-->
+<!--      const author = quoteAuthor.textContent.replace(/^—\s*/,'');-->
+<!--      return `${text} — ${author}`;-->
+<!--    }-->
+<!--    document.getElementById('shareWhatsApp').addEventListener('click', ()=>{-->
+<!--      const msg = encodeURIComponent(currentQuote());-->
+<!--      window.open(`https://wa.me/?text=${msg}`,'_blank');-->
+<!--    });-->
+<!--    document.getElementById('shareTwitter').addEventListener('click', ()=>{-->
+<!--      const msg = encodeURIComponent(currentQuote());-->
+<!--      window.open(`https://twitter.com/intent/tweet?text=${msg}`,'_blank');-->
+<!--    });-->
+<!--    document.getElementById('copyQuote').addEventListener('click', async ()=>{-->
+<!--      try{ await navigator.clipboard.writeText(currentQuote()); alert('Copied!'); }-->
+<!--      catch(e){ alert('Copy failed.'); }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BMI Calculator – Interactive Gauge & Tips</title>
+    <meta name="description" content="Friendly BMI calculator with visual gauge, category tips, ideal weight range, and ad space." />
+    <style>
+        :root{
+          --bg:#f7fafc;          /* light background */
+          --card:#ffffff;        /* card background */
+          --muted:#6b7280;       /* gray-500 */
+          --text:#1f2937;        /* gray-800 */
+          --brand:#2563eb;       /* blue-600 */
+          --ok:#10b981;          /* emerald-500 */
+          --warn:#f59e0b;        /* amber-500 */
+          --bad:#ef4444;         /* red-500 */
+          --soft:#e5e7eb;        /* gray-200 */
+          --border:#e5e7eb;
+        }
+        *{box-sizing:border-box}
+        html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+        .container{max-width:980px;margin:0 auto;padding:24px}
+        header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+        h1{font-size:clamp(22px,3vw,28px);margin:0;color:#111827}
+        .muted{color:var(--muted)}
+
+        .grid{display:grid;gap:18px;grid-template-columns:1fr;}
+        @media(min-width:960px){.grid{grid-template-columns:1.1fr .9fr}}
+
+        .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+        .card h2{margin:0 0 8px;font-size:20px}
+        label{display:block;margin:10px 0 6px;font-weight:600}
+        input{width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--text);outline:none}
+        input:focus{border-color:#93c5fd;box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+        .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+        button{appearance:none;border:1px solid #93c5fd;background:#3b82f6;color:#fff;padding:11px 14px;border-radius:12px;font-weight:700;cursor:pointer}
+        button.secondary{background:#fff;color:#1f2937;border-color:var(--border)}
+
+        .result{display:grid;gap:10px;margin-top:14px}
+        .pill{display:inline-flex;align-items:center;gap:8px;background:#f3f4f6;border:1px solid var(--border);padding:8px 12px;border-radius:999px}
+        .kpis{display:flex;flex-wrap:wrap;gap:8px}
+
+        /* Gauge */
+        .gauge{position:relative;height:24px;border-radius:999px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(90deg,#60a5fa 0 25%, #34d399 25% 50%, #fbbf24 50% 75%, #f87171 75% 100%)}
+        .needle{position:absolute;top:-6px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid #111827;transform:translateX(-50%)}
+        .scale{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+
+        .legend{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+        .legend .item{display:flex;align-items:center;gap:6px}
+        .dot{width:12px;height:12px;border-radius:50%}
+        .u{background:#60a5fa}.n{background:#34d399}.o{background:#fbbf24}.ob{background:#f87171}
+
+        /* Tips */
+        .tips{display:grid;gap:10px}
+        .tip{border-left:4px solid #d1d5db;padding:8px 12px;background:#f9fafb;border-radius:10px}
+        .tip.ok{border-color:var(--ok)}
+        .tip.warn{border-color:var(--warn)}
+        .tip.bad{border-color:var(--bad)}
+
+        /* Ad placeholder */
+        .ad{margin-top:12px;padding:16px;border:2px dashed var(--border);border-radius:12px;text-align:center;color:var(--muted);background:#f9fafb}
+
+        footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>BMI Calculator</h1>
+        <div class="muted">Visual gauge • category tips • ideal weight</div>
+    </header>
+
+    <section class="grid">
+        <div class="card">
+            <h2>Your Details</h2>
+            <p class="muted">Enter height and weight. We’ll show your BMI, category, and suggestions.</p>
+            <div class="row">
+                <div>
+                    <label for="height">Height</label>
+                    <input id="height" type="number" inputmode="decimal" placeholder="Height in cm (e.g., 165)" min="50" max="260">
+                </div>
+                <div>
+                    <label for="weight">Weight</label>
+                    <input id="weight" type="number" inputmode="decimal" placeholder="Weight in kg (e.g., 60)" min="10" max="350">
+                </div>
+            </div>
+            <div class="actions">
+                <button id="calcBtn">Calculate BMI</button>
+                <button class="secondary" id="resetBtn">Reset</button>
+            </div>
+
+            <div class="result" id="resultBox" hidden>
+                <div class="kpis">
+                    <span class="pill">BMI: <strong id="bmiVal">–</strong></span>
+                    <span class="pill">Category: <strong id="bmiCat">–</strong></span>
+                    <span class="pill">Ideal weight: <strong id="idealRange">–</strong></span>
+                </div>
+
+                <div>
+                    <div class="gauge" aria-label="BMI category gauge">
+                        <div class="needle" id="needle" style="left:0%"></div>
+                    </div>
+                    <div class="scale"><span>Under</span><span>Normal</span><span>Over</span><span>Obese</span></div>
+                    <div class="legend">
+                        <div class="item"><span class="dot u"></span><span class="muted">Underweight &lt; 18.5</span></div>
+                        <div class="item"><span class="dot n"></span><span class="muted">Normal 18.5–24.9</span></div>
+                        <div class="item"><span class="dot o"></span><span class="muted">Overweight 25–29.9</span></div>
+                        <div class="item"><span class="dot ob"></span><span class="muted">Obesity ≥ 30</span></div>
+                    </div>
+                </div>
+
+                <div class="tips" id="tips"></div>
+            </div>
+
+            <!-- AdSense placeholder (paste your code inside this card when approved)
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="YYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+            <div class="ad">Ad space</div>
+        </div>
+
+        <div class="card">
+            <h2>What is BMI?</h2>
+            <p class="muted">Body Mass Index is your weight (kg) divided by the square of your height (m). It’s a quick screening tool, not a diagnosis.</p>
+            <svg viewBox="0 0 120 80" width="100%" style="max-width:420px;display:block;margin:8px auto">
+                <!-- Simple illustration using inline SVG (friendly silhouettes) -->
+                <defs>
+                    <linearGradient id="grad" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#60a5fa"/>
+                        <stop offset="35%" stop-color="#34d399"/>
+                        <stop offset="70%" stop-color="#fbbf24"/>
+                        <stop offset="100%" stop-color="#f87171"/>
+                    </linearGradient>
+                </defs>
+                <rect x="5" y="60" width="110" height="10" rx="5" fill="url(#grad)"/>
+                <circle cx="15" cy="40" r="8" fill="#60a5fa" opacity=".8"/>
+                <circle cx="45" cy="38" r="9" fill="#34d399" opacity=".8"/>
+                <circle cx="75" cy="42" r="10" fill="#fbbf24" opacity=".8"/>
+                <circle cx="105" cy="46" r="11" fill="#f87171" opacity=".8"/>
+                <text x="5" y="58" font-size="6" fill="#6b7280">Under</text>
+                <text x="37" y="58" font-size="6" fill="#6b7280">Normal</text>
+                <text x="70" y="58" font-size="6" fill="#6b7280">Over</text>
+                <text x="103" y="58" font-size="6" fill="#6b7280">Obese</text>
+            </svg>
+            <p class="muted" style="margin-top:8px">Categories don’t account for muscle mass or medical conditions. Consult a professional for personalized advice.</p>
+        </div>
+    </section>
+
+    <footer>Made with ♥ • No data is stored</footer>
+</div>
+
+<script>
+    const heightInput = document.getElementById('height');
+    const weightInput = document.getElementById('weight');
+    const calcBtn = document.getElementById('calcBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultBox = document.getElementById('resultBox');
+    const bmiVal = document.getElementById('bmiVal');
+    const bmiCat = document.getElementById('bmiCat');
+    const idealRangeEl = document.getElementById('idealRange');
+    const needle = document.getElementById('needle');
+    const tipsEl = document.getElementById('tips');
+
+    function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
+
+    function bmiCategory(bmi){
+      if(bmi < 18.5) return 'Underweight';
+      if(bmi < 25) return 'Normal';
+      if(bmi < 30) return 'Overweight';
+      return 'Obese';
+    }
+
+    function gaugePosition(bmi){
+      // Map BMI 10–40 to 0–100% (extend a little for extremes)
+      const min=10, max=40;
+      const p = (bmi - min) / (max - min) * 100;
+      return clamp(p, 0, 100);
+    }
+
+    function idealWeightRange(heightCm){
+      const h = heightCm/100; // meters
+      const min = 18.5 * h * h; // BMI 18.5
+      const max = 24.9 * h * h; // BMI 24.9
+      return [min, max];
+    }
+
+    function prettyKg(x){
+      return new Intl.NumberFormat(undefined,{maximumFractionDigits:1}).format(x) + ' kg';
+    }
+
+    function tipsFor(cat){
+      const blocks = {
+        'Underweight': [
+          'Aim for nutrient-dense calories: nuts, dairy, whole grains, legumes.',
+          'Add a protein source to each meal and consider strength training 2–3×/week.',
+          'Check with a clinician if you’ve had recent unintentional weight loss.'
+        ],
+        'Normal': [
+          'Great job! Keep a balanced plate: half veggies/fruit, a quarter protein, a quarter whole grains.',
+          'Stay active: 150 minutes/week of moderate activity + 2 days of strength work.',
+          'Prioritize sleep and hydration to maintain your range.'
+        ],
+        'Overweight': [
+          'Start with small swaps: fewer sugary drinks, more water and fiber-rich foods.',
+          'Aim for 30–45 minutes of brisk walking most days.',
+          'Track portions for a week to spot easy wins.'
+        ],
+        'Obese': [
+          'Consider a structured plan with professional guidance for sustainable change.',
+          'Build habits gently: consistent meals, regular movement, and sleep routine.',
+          'If you have health concerns, consult a healthcare provider.'
+        ]
+      };
+      return blocks[cat] || [];
+    }
+
+    function calculate(){
+      const height = parseFloat(heightInput.value);
+      const weight = parseFloat(weightInput.value);
+      if(!(height>0) || !(weight>0)){
+        resultBox.hidden = false;
+        bmiVal.textContent = '–';
+        bmiCat.textContent = '–';
+        idealRangeEl.textContent = '–';
+        needle.style.left = '0%';
+        tipsEl.innerHTML = '<div class="tip warn">Enter valid height and weight to see results.</div>';
+        return;
+      }
+      const h = height/100;
+      const bmi = weight/(h*h);
+      const bmiRounded = Math.round(bmi*10)/10;
+      const cat = bmiCategory(bmi);
+      const pos = gaugePosition(bmi);
+      const [minKg, maxKg] = idealWeightRange(height);
+
+      resultBox.hidden = false;
+      bmiVal.textContent = bmiRounded.toFixed(1);
+      bmiCat.textContent = cat;
+      idealRangeEl.textContent = `${prettyKg(minKg)} – ${prettyKg(maxKg)}`;
+      needle.style.left = pos + '%';
+
+      // Tips
+      const tips = tipsFor(cat);
+      tipsEl.innerHTML = tips.map(t=>`<div class="tip ${cat==='Normal'?'ok':(cat==='Overweight'?'warn':(cat==='Obese'?'bad':''))}">${t}</div>`).join('');
+    }
+
+    calcBtn.addEventListener('click', calculate);
+    [heightInput, weightInput].forEach(el=>el.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); calculate(); } }))
+    resetBtn.addEventListener('click', ()=>{
+      heightInput.value = '';
+      weightInput.value = '';
+      resultBox.hidden = true;
+    });
+</script>
+</body>
+</html>
