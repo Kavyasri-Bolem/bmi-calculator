@@ -423,7 +423,6 @@
 <!--</html>-->
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -454,8 +453,9 @@
         h1{font-size:clamp(22px,3vw,28px);margin:0;color:#111827}
         .muted{color:var(--muted)}
 
+        /* --- CHANGE 1: Grid columns are now equal to balance the cards --- */
         .grid{display:grid;gap:18px;grid-template-columns:1fr;}
-        @media(min-width:960px){.grid{grid-template-columns:1.1fr .9fr}}
+        @media(min-width:960px){.grid{grid-template-columns:1fr 1fr}}
 
         .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
         .card h2{margin:0 0 8px;font-size:20px}
@@ -543,11 +543,6 @@
                 <div class="tips" id="tips"></div>
             </div>
 
-            <!-- AdSense placeholder (paste your code inside this card when approved)
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="YYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            -->
             <div class="ad">Ad space</div>
         </div>
 
@@ -555,7 +550,6 @@
             <h2>What is BMI?</h2>
             <p class="muted">Body Mass Index is your weight (kg) divided by the square of your height (m). It’s a quick screening tool, not a diagnosis.</p>
             <svg viewBox="0 0 120 80" width="100%" style="max-width:420px;display:block;margin:8px auto">
-                <!-- Simple illustration using inline SVG (friendly silhouettes) -->
                 <defs>
                     <linearGradient id="grad" x1="0" x2="1">
                         <stop offset="0%" stop-color="#60a5fa"/>
@@ -565,16 +559,27 @@
                     </linearGradient>
                 </defs>
                 <rect x="5" y="60" width="110" height="10" rx="5" fill="url(#grad)"/>
-                <circle cx="15" cy="40" r="8" fill="#60a5fa" opacity=".8"/>
+                <circle cx="15" cy="40" r="9" fill="#60a5fa" opacity=".8"/>
                 <circle cx="45" cy="38" r="9" fill="#34d399" opacity=".8"/>
-                <circle cx="75" cy="42" r="10" fill="#fbbf24" opacity=".8"/>
-                <circle cx="105" cy="46" r="11" fill="#f87171" opacity=".8"/>
+                <circle cx="75" cy="42" r="9" fill="#fbbf24" opacity=".8"/>
+                <circle cx="105" cy="46" r="9" fill="#f87171" opacity=".8"/>
                 <text x="5" y="58" font-size="6" fill="#6b7280">Under</text>
                 <text x="37" y="58" font-size="6" fill="#6b7280">Normal</text>
                 <text x="70" y="58" font-size="6" fill="#6b7280">Over</text>
                 <text x="103" y="58" font-size="6" fill="#6b7280">Obese</text>
             </svg>
             <p class="muted" style="margin-top:8px">Categories don’t account for muscle mass or medical conditions. Consult a professional for personalized advice.</p>
+            <h3>Understanding Your BMI Results</h3>
+            <p class="muted">
+                Your BMI result is categorized as Underweight, Normal, Overweight, or Obese. These categories are a quick way to screen for potential health issues but are not a definitive measure of health. A BMI result can be misleading for athletes, bodybuilders, or the elderly, as it does not differentiate between fat and muscle mass.
+            </p>
+            <h3>Limitations and Considerations</h3>
+            <p class="muted">
+                BMI is a valuable starting point, but it has important limitations. It does not measure body fat directly and cannot account for a person's age, gender, or muscle mass. For example, a highly muscular athlete might have a BMI in the "Overweight" range but have very little body fat. Conversely, an elderly person with low muscle mass might be in the "Normal" range but still have excess body fat.
+            </p>
+            <p class="muted">
+                For a comprehensive assessment of your health, it is essential to consult with a healthcare professional who can consider other factors like waist circumference, diet, physical activity levels, and family history.
+            </p>
         </div>
     </section>
 
